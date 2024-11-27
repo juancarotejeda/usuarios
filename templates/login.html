@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Mototaxistas</title> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+   <link rel="webside icon" type="png" href="/static/imagen/favicon/favicon-32x32.png">
+   <link href="/static/css/navbars.css" rel="stylesheet">
+</head>  
+<body>
+  <div class="publicidad">
+    <img src="/static/imagen/barrio_seguro-intran.gif" alt="publicidad">
+  </div>
+  <fieldset class="login">
+  <form  method='POST' action="/verificador">    
+  <h1>GRUPO ACTEC MOTOBEN</h1> 
+  <h2>Choferes</h2> 
+  {% with messages = get_flashed_messages()%}
+  {% if messages%}
+  {% for message in messages%}
+     <div class="msg">{{message}}</div>
+  {%endfor%}
+  {%endif%}
+  {%endwith%} 
+  <ol>
+  <li> 
+  <label for="parada">Parada</label>          
+  <select name="parada" id="parada">
+        <optgroup label="Paradas">
+          <option selected ></option> 
+          {%for parada in paradas%}  
+          <option >{{parada}}</option>
+          {%endfor%}
+        </optgroup>
+  </select>      
+  </li> 
+  <li>  
+    <label for="cedula">Cedula</label>    
+    <input type="text" name="cedula" id="cedula" placeholder="Cedula" required>       
+  </li>
+  <li> 
+    <label for="clave">Codigo</label>
+    <input type="password" id="clave" name="clave" placeholder="Contraseña" required>    
+  </li>
+  <li>
+  <button type="submit" >ENTRAR</button>
+  </li>
+  </ol>
+  </form>
+</fieldset> 
+</body>
+</html>

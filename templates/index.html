@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>choferes</title>
+    <link rel="webside icon" type="png" href="/static/imagen/favicon/favicon-32x32.png">
+    <link href="/static/css/min.css" rel="stylesheet"> 
+    <link href="/static/css/navbars.css" rel="stylesheet">   
+    <!-- Custom styles for this template -->  
+    <script src="/static/js/min.js"></script>
+    <script src="/static/js/color-modes.js"></script> 
+  </head>
+  <body>
+ <div id="regresar"></div>   
+  <div class="container">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary rounded" aria-label="Eleventh navbar example">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img class="logo" src="/static/imagen/favicon/favicon-32x32.png" alt="logo">   MOTOTAXISTAS</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExample09">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#informacion">INFORMACION</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#listado">LISTA DE MIEMBROS</a>
+            </li>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#finanzas">REALIDAD FINANCIERA</a>
+          </li>
+
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#aportes" data-bs-toggle="dropdown" aria-expanded="false">APORTES</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#historia_aportes">Historico de aportes</a></li>
+                <li><a class="dropdown-item" href="#otros">Another action</a></li>
+                <li><a class="dropdown-item" href="#galeria">Galeria de imagenes</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form role="search">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div class="publicidad">
+      <img src="/static/imagen/barrio_seguro-intran.gif" alt="publicidad">
+    </div>
+    <section id="informacion">
+      <fieldset class="info-parada">  
+        {%for datos in informacion %}   
+        <h1>INFORMACION DE LA PARADA</h1>  
+        <ol>    
+        <li>
+        <label for="parada">Nombre:</label>
+        <input type="text" value="{{datos[1]}}" id="parada" readonly>
+        </li>
+        <li>
+        <label for="direccion">Direccion:</label>
+        <input type="text" value="{{datos[2]}}" id="direccion" readonly>
+        </li>
+        <li>
+        <label for="municipio">Municipio:</label>
+        <input type="text" value="{{datos[3]}}" id="municipio" readonly>
+        </li>
+        <li>
+        <label for="provincia">Provincia:</label>
+        <input type="text" value="{{datos[4]}}" id="provincia" readonly>
+        </li>
+        <li>
+        <label for="zona">Zona :</label>
+        <input type="text" value="{{datos[5]}}" id="zona" readonly>
+        </li>
+        <li>
+        <label for="aporte">Aporte :</label>
+        <input type="text" value="{{datos[6]}}RD$/{{datos[7]}}" id="aporte" readonly>
+        </li>
+        
+        <li>
+        <label for="press">presidente:</label>
+        <input type="text" value="{{cabecera[1]}}" id="press"readonly>
+        </li>
+        <li>
+        <label for="veedor">Pte. Feder.:</label>
+        <input type="text" value="xxxxxxx" id="veedor" readonly>
+        </li>
+        <li>
+        <label for="miemb">Miembros:</label>
+        <input type="text" value="{{cabecera[0]}}" id="miemb" readonly>
+        </li>
+        </ol>
+        {%endfor%}
+        <div class="botonera">
+        <div class="bt-regresar">
+          <label for="regresar">
+          <a href="#regresar">regreso</a> 
+        </label>
+        </div>
+        </div>
+        </fieldset>
+    </section>
+<section id="info-personal">
+  <fieldset class="info-personal">
+    <h1>INFORMACIN PERSONAL</h1>
+    <p>Saludos Señor(a) {{nombre}}usted mantiene </p>
+
+
+
+  </fieldset>
+</section>
+
+
+
+    <section id="listado">
+      <fieldset class="tables"> 
+        <h1>LISTADO DE MIEMBROS</h1>
+        <table>
+           <tr>
+              <th>Item</th>
+              <th>Nombre del asociado</th>
+              <th>Cedula</th>
+              <th>Telefono</th>
+              <th>Funcion</th>
+           </tr>
+           {% for usuario in miembros %}
+           <tr>
+              <td>{{usuario[0]}}</td>
+              <td>{{usuario[1]}}</td>
+              <td>{{usuario[2]}}</td>
+              <td>{{usuario[3]}}</td>
+              <td>{{usuario[4]}}</td>
+           </tr>
+           {%endfor%}
+        </table>
+        <div class="botonera">
+        <div class="bt-regresar">
+          <label for="regresar">
+          <a href="#regresar">regreso</a> 
+        </label>
+        </div> 
+        </div> 
+        </fieldset>
+    </section>
+    <section id="finanzas">
+      <fieldset class="tables">
+        <h1>INFORMACION FINANCIERA</h1>
+        <table>
+           <tr>
+              <th>Item</th>
+              <th>Informacion financiera</th>
+              <th>Total al momento</th>
+           </tr>
+           <tr>
+            <tD>1</tD>
+            <td>Historico de aporta de los asociados :</td>
+            <td>{{diario[2]}}RD$</td>
+         </tr>
+         <tr>
+            <tD>2</tD>
+            <td>Historico de ingresos por otras actividades :</td>
+            <td> {{diario[4]}}RD$</td>
+         </tr>
+         <tr>
+            <tD>3</tD>
+            <td> Historico de abonos a prestamos de los asociados:</td>
+            <td>{{diario[6]}}RD$</td>
+         </tr>
+           <tr>
+            <tD>4</tD>
+            <td>Historico de Prestamos facilitados los asociados :</td>
+            <td>{{diario[1]}}RD$</td>
+         </tr>
+         <tr>
+            <tD>5</tD>
+            <td>Historial de cuotas no pagadas por los asociados:</td>
+            <td>{{diario[5]}}RD$</td>
+         </tr>
+         <tr>
+            <tD>6</tD>
+            <td>Historial de gastos incurridos por la parada :</td>
+            <td>{{diario[3]}}RD$</td>
+         </tr>
+      
+           <tr>
+              <tD>7</tD>
+              <td>Informacion de balance bancario actualizada:</td>
+              <td>{{diario[7]}}RD$</td>
+           </tr>
+           <tr>
+              <tD>8</tD>
+              <td>Balance segun datos aportas por el presidente:</td>
+              <td>{{diario[0]}}RD$</td>
+           </tr>
+        </table>
+        <div class="botonera">
+        <div class="bt-regresar">
+          <label for="regresar">
+          <a href="#regresar">regreso</a> 
+        </label>
+        </div>
+      </div>
+      </fieldset>
+    </section>
+    <section id="aportes">
+      <section id="historia_aportes">
+        <fieldset class="tables">
+          <h1>Historial de Aportes y Pendientes</h1>
+          <table>
+             <tr>
+                <th>Nombre de asociado</th>
+                <th>Total cuotas</th>
+                <th>Cuotas pagadas</th>
+                <th>Cuotas Pendientes</th>
+                <th>Porcentaje de pagos(%)</th>
+             </tr>
+             {% for usuario in cuotas_hist %}
+             <tr>
+                <td>{{usuario[0]}}</td>
+                <td>{{usuario[3]}}</td>
+                <td>{{usuario[1]}}</td>
+                <td>{{usuario[2]}}</td>
+                <td>{{usuario[4]}}%</td>
+             </tr>
+             {%endfor%}
+          </table>
+          <div class="botonera">
+          <div class="bt-regresar">
+            <label for="regresar">
+            <a href="#regresar">regreso</a> 
+          </label>
+          </div>
+        </div>    
+       </fieldset>
+      </section>
+      <section id="otros"></section>
+      <section id="galeria"></section>
+    </section>
+    </body>
+</html>
