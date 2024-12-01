@@ -32,47 +32,42 @@ def login():
 
 @app.route("/verificador", methods=["GUET","POST"])
 def verificador(): 
-   msg = ''
-   global parada 
+   msg = ''   
    if request.method == 'POST':        
     parada = request.form['parada']
-    cedula = request.form['cedula']
-    password = request.form['clave']   
+    cedula = request.form['cedula']  
     cur = connection.cursor()    
     estacion=funciones.check_parada(cur,parada)
     if estacion == True:           
         cur.execute(f"SELECT cedula FROM {parada} WHERE cedula='{cedula}'")
         result = cur.fetchall()
-        if result != []:   
-         cur.execute(f"SELECT password FROM tabla_index  WHERE nombre ='{parada}'" )
-         ident=cur.fetchall() 
-         for idx in ident:  
-            if password == idx[0]:                                                                          
+        if result != []:                                                                             
                 fecha = datetime.strftime(datetime.now(),"%Y %m %d - %H")
-                informacion=funciones.info_parada(cur,parada) 
-                cabecera=funciones.info_cabecera(cur,parada) 
-                nombre=funciones.info_personal(cur,parada,cedula)
-                print(nombre)
-                #prestamo=funciones.verificar_prestamo(cur,parada,nombre)
-                miembros=funciones.lista_miembros(cur,parada)                
-                diario=funciones.diario_general(cur,parada) 
-                cuotas_hist=funciones.prestamo_aport(cur,parada)
+                informacion = funciones.info_parada(cur,parada) 
+                cabecera = funciones.info_cabecera(cur,parada) 
+                nombre =  funciones.info_personal(cur,parada,cedula)
+                prestamo = funciones.verificar_prestamo(cur,parada,cedula)
+                miembros = funciones.lista_miembros(cur,parada)                
+                diario = funciones.diario_general(cur,parada) 
+                cuotas_hist = funciones.pendiente_aport(cur,parada)
+                #abonos = funciones.verificar_abonos(cur,parada,cedula,prestamo)
+                pagos = funciones.hist_pago(cur,parada,nombre,cedula)
+                mostrar = funciones.visibilidad(pagos[1])
                 cur.close()
-                return render_template('index.html',informacion=informacion,cabecera=cabecera,fecha=fecha,miembros=miembros,diario=diario,cuotas_hist=cuotas_hist,nombre=nombre)                 
-            else:
-               msg = 'Incorrecta contraseña de la parada!'          
-               flash(msg)           
-               return redirect(url_for('login'))    
-        else:    
-          msg = 'cedula Incorrecta para esta parada!'
-          flash(msg)           
-          return redirect(url_for('login'))    
+                return render_template('index.html',informacion=informacion,cabecera=cabecera,fecha=fecha,miembros=miembros,diario=diario,cuotas_hist=cuotas_hist,nombre=nombre,prestamo=prestamo,pagos=pagos,mostrar=mostrar)                 
+        else:
+            msg = 'cedula Incorrecta para esta parada!'        
+            flash(msg)           
+            return redirect(url_for('login'))    
+    
     else:
       msg = 'Esta parada esta fuera de operacion!' 
       flash(msg)          
       return redirect(url_for('login'))            
 
-
+@app.route("/canal")
+def canal():
+    return render_template('canal_motoben.html')
 
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0')

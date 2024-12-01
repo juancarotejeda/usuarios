@@ -13,7 +13,7 @@ def listado_paradas(cur):
     return db_paradas
 
 def info_parada(cur,parada):
-    cur.execute(f"SELECT codigo,nombre,direccion,municipio,provincia,zona,cuota,pago,banco,num_cuenta FROM  tabla_index  WHERE nombre='{parada}'" )
+    cur.execute(f"SELECT codigo,nombre,direccion,municipio,provincia,zona,cuota,pago,banco,num_cuenta,federacion,geolocalizacion FROM  tabla_index  WHERE nombre='{parada}'" )
     infos=cur.fetchall()     
     return infos
 
@@ -70,7 +70,9 @@ def diario_general(cur,parada):
     data=(balance,prestamos,ingresos,gastos,aporte,pendiente,abonos,balance_bancario)   
     return data
 
-def prestamo_aport(cur,parada):
+def pendiente_aport(cur,parada):
+    var1=[]
+    var2=[]
     cur.execute(f"SHOW TABLES LIKE '{parada}_cuota'")
     vericar=cur.fetchall()
     if vericar !=[]:
@@ -109,19 +111,14 @@ def aportacion(cur,parada):
     data=cur.fetchall()
     return data
   
-def verif_p(cur,parada,cedula,password):
-    cur.execute(f"SELECT * FROM tabla_index WHERE  adm_password = '{password}'")
-    result=cur.fetchall()
-    if result:
-      cur.execute(f"SELECT * FROM {parada} WHERE  cedula = '{cedula}'")                                       
-      accounts =cur.fetchall()
-      if accounts != []:
+def verif_p(cur,parada,cedula):
+    cur.execute(f"SELECT * FROM {parada} WHERE  cedula = '{cedula}'")                                       
+    accounts =cur.fetchall()
+    if accounts != []:
          return True
-      else:
+    else:
          return False 
-    else: 
-        return False
-
+     
 def nombres_miembro(cur,parada):
         listado=[]
         cur.execute(f"SELECT nombre FROM {parada} ")
@@ -141,22 +138,64 @@ def info_personal(cur,parada,cedula):
       return []  
 
 def verificar_prestamo(cur,parada,cedula):
-    fecha=[]
-    prestado=[]
-    monto=[]
-    cur.execute(f"SELECT nombre FROM {parada} WHERE cedula='{cedula}'") 
-    nombre = cur.fetchall()
-    print(nombre)
-    cur.execute(f"SELECT fecha prestamo_a monto_prestamo FROM {parada}_prestamos WHERE cedula='{nombre}'") 
-    prestamo=cur.fetchall()
-    if prestamo !=[]:
-       for prestado in prestamo:
-           fecha=prestado[0]
-           prestado = prestamo[1]
-           monto= prestamo[2]
-    print(fecha,prestado,monto)       
-    return fecha,prestado,monto
+    cur.execute(f"SHOW TABLES LIKE '{parada}_cuota'")
+    vericar=cur.fetchall()
+    if vericar !=[]:    
+    
+        prestado=[]    
+        nombre=[]
+        cur.execute(f"SELECT nombre FROM {parada} WHERE cedula = '{cedula}'") 
+        nombres = cur.fetchall()
+        for pers in nombres:
+            nombre=pers[0]
+        cur.execute(f"SELECT fecha,monto_prestamo FROM {parada}_prestamos WHERE prestamo_a ='{nombre}'") 
+        prestamo=cur.fetchall()
+        if prestamo !=[]:
+           for prestado in prestamo:   
+             return (f"usted tomo un prestamo en fecha {prestado[0]},por un monto de {prestado[1]}RD$") 
+        else:
+           return 'No tiene prestamo a este momento'
+    else:
+        return 'No hay registro de prestamo en esta parada'
 
+
+def verificar_abonos(cur,parada,cedula,prestamo):
+    if (str(prestamo) != 'No tiene prestamo a este momento' ) or (str(prestamo) !='No hay registro de prestamo en esta parada'):
+        
+       return  'Tiene abonos pendientes de su deuda'
+    else:
+        return 'No teneno deuda registrada de usted en nuestros archivo'
+    
+    
+def hist_pago(cur,parada,nombre,cedula): 
+    var1=[] 
+    var2=[] 
+    cur.execute(f"SHOW TABLES LIKE '{parada}_cuota'")
+    vericar=cur.fetchall()
+    if vericar !=[]:
+         cur.execute(f"SELECT COUNT(estado) FROM {parada}_cuota WHERE estado = 'pago' and nombre='{nombre}'") 
+         var_x = cur.fetchall()
+         for var_p in var_x:
+              var1=var_p[0]
+         cur.execute(f"SELECT COUNT(estado) FROM {parada}_cuota WHERE estado = 'no_pago' and nombre='{nombre}'")
+         var_z = cur.fetchall()
+         for var_n in var_z:
+              var2=var_n[0]   
+         sub_t=var1+var2
+         if sub_t != 0 :    
+          avg=round((var1/sub_t)*100,2)
+         else:
+            avg = 0.00                                           
+         return (f" {sub_t} cuotas usted a pagado {var1} cuotas y tiene pendiente de pagar {var2} cuotas  por tanto su promedio de pago es de { avg}%",avg) 
+    else:
+      return ' de 0 cuotas no hay cuotas en atraso',0  
+    
+def visibilidad(pagos):
+    if float(pagos) > 49 :
+      return 'ver'   
+    else:
+        return 'no_ver'
+    
 def dat_miembros(cur,parada,miembro):
     cur.execute(f"SELECT nombre,cedula,telefono,funcion FROM {parada} WHERE nombre='{miembro}'")
     listado=cur.fetchall()
