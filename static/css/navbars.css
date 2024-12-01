@@ -1,9 +1,8 @@
 body {
   display: block;
   padding-bottom: 20px;
-  padding-right: 10px;
-  padding-left: 10px;
   background: azure;
+  float: left;
 
 }
 
@@ -159,7 +158,9 @@ font-size: medium;
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
   }
-
+body{
+  margin: 0px auto;
+}
 }
 
 
@@ -173,22 +174,27 @@ font-size: medium;
   min-width: 390px;
 }
 
-  .tables{
-    min-width: 390px;
+  .datas{
+    min-width: 420px;
   }
 
  .encabezado{
-  min-width: 390px;
+  min-width: 420px;
  } 
 
  .navbar {
+  min-width: 420px;
+ 
+}
+
+.login {
   min-width: 390px;
  
 }
 
 .publicidad{
-  min-width: 390px;  
-padding-left: 0PX;
+  min-width: 420px;  
+  margin-left: 0px;
 }
 
 
@@ -260,9 +266,7 @@ padding-left: 0PX;
     
 
   .login{
-      background-image: url(/static/imagen/paya.png);
-      background-position: center;
-      color: white;
+      color: #000000;
       font-size: 12px;
       padding: 10px;
       width: auto;
@@ -279,13 +283,15 @@ padding-left: 0PX;
           text-align: center;
           margin-bottom: 10px; 
           font-size: medium;  
-          font-weight: 700;         
+          font-weight: 700;
+          color: orangered;         
           }  
           
       .login h2{
-        text-align: left;
+        text-align: center;
         font-size: medium;  
-        font-weight: 700;         
+        font-weight: 700;
+        color: blue;         
         }            
 
 
