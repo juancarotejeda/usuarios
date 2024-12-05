@@ -1,8 +1,6 @@
 body {
-  padding-bottom: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
-  
+  padding-bottom: 5px;
+
 }
 
 .autorizacion{
@@ -12,8 +10,7 @@ display:block;
 .desautorizacion{
   display:none;
 }
-
-
+  
 
 .navbar {
   margin-top: 10px;
@@ -67,15 +64,15 @@ display:block;
 }
 
 .publicidad{
+  margin: 0px auto;
   align-items: center;
   height: 100px;
   width: auto;
   color: white;
   font-size: 12px;
-  width: auto;
+  width: max-content;
   border:solid 5px LightSteelBlue;
   border-radius: 10px;
-  margin-top: 20px;
   overflow: hidden;
 }
   
@@ -157,13 +154,13 @@ font-size: medium;
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
   }
-body{
-  margin: 0px auto;
-}
+
 }
 
 
 @media (max-width:768px) {
+
+ 
 
 .info-parada{
   min-width: 390px;
@@ -174,30 +171,29 @@ body{
 }
 
   .datas{
-    min-width: 420px;
+    min-width: 390px;
   }
 
  .encabezado{
-  min-width: 420px;
+  min-width: 390px;
  } 
 
  .navbar {
-  min-width: 420px;
+  min-width: 390px;
  
 }
-
-.login {
-  min-width: 390px;
+.login{
+  min-width: 390px;  
+}
  
 }
 
 .publicidad{
-  min-width: 420px;  
-  margin-left: 0px;
+  min-width: 390px;  
+ 
 }
 
 
-}
 
 .b-example-divider {
   width: 100%;
@@ -269,8 +265,7 @@ body{
     color: #000000;
     font-size: 12px;
     font-weight: 700;
-    padding: 30px;
-    width: min-content;
+    width: max-content;
     height: 250px;
     border:solid 10px LightSteelBlue;
     border-radius: 10px;
@@ -316,8 +311,11 @@ body{
       .login select{
         font-size:12px;
         background: rgb(255, 255, 255);
+        color: #000000;
+        font-weight: 700;
+        float: right;
         border-radius: 5px;
-        margin-left: 65px;       
+        margin-right:60px ;          
         width: 150px;
         height: 25px;
       }
@@ -327,8 +325,11 @@ body{
       .login input{
         font-size:12px;
         background: rgb(255, 255, 255);
+        color: #000000;
+        font-weight: 700;
+        float: right;
         border-radius: 5px;
-        margin-left: 65px;  
+        margin-right:60px ; 
         height: 20px; 
         width: 150px;
               }
@@ -336,8 +337,11 @@ body{
 .login button{
     font-size:12px;
     background: rgb(255, 255, 255);
+    color: #000000;
+    font-weight: 700;
+    float: right;
     border-radius: 5px;
-    margin-left: 70px; 
+    margin-right:60px ; 
     height: 25px; 
     width: 150px;  
   }        
