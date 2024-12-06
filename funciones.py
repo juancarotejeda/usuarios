@@ -156,7 +156,7 @@ def verificar_prestamo(cur,parada,cedula):
         else:
            return 'No tiene prestamo a este momento'
     else:
-        return 'No hay registro de prestamo en esta parada'
+        return 'No hay registro de prestamo para usted en esta parada'
 
 
 def verificar_abonos(cur,parada,cedula,prestamo):
@@ -201,3 +201,17 @@ def dat_miembros(cur,parada,miembro):
     listado=cur.fetchall()
     return listado
 
+def vef_cedula(cur,cedula):
+  lista_paradas=[]  
+  cur.execute("SELECT nombre FROM tabla_index")  
+  db_paradas=cur.fetchall()    
+  for parada in db_paradas:
+      lista_paradas+=parada   
+  for parada in lista_paradas:
+      cur.execute(f"SELECT nombre FROM {parada} WHERE cedula='{cedula}'")
+      nombre=cur.fetchall()
+      if nombre !=[]:            
+        print(parada)
+        return parada
+              
+  return []    

@@ -12,7 +12,7 @@ DB_PASSWORD =os.getenv("DB_PASSWORD")
 DB_NAME =os.getenv("DB_NAME")
 
 # Connect to the database
-connection =mysql.connector.connect(
+connection = mysql.connector.connect(
     host=DB_HOST,
     user=DB_USERNAME,
     password=DB_PASSWORD,
@@ -34,37 +34,29 @@ def login():
 def verificador(): 
    msg = ''   
    if request.method == 'POST':        
-    parada = request.form['parada']
     cedula = request.form['cedula']  
-    cur = connection.cursor()    
-    estacion=funciones.check_parada(cur,parada)
-    if estacion == True:           
-        cur.execute(f"SELECT cedula FROM {parada} WHERE cedula='{cedula}'")
-        result = cur.fetchall()
-        if result != []:                                                                             
-                fecha = datetime.strftime(datetime.now(),"%Y %m %d - %H")
-                informacion = funciones.info_parada(cur,parada) 
-                cabecera = funciones.info_cabecera(cur,parada) 
-                nombre =  funciones.info_personal(cur,parada,cedula)
-                prestamo = funciones.verificar_prestamo(cur,parada,cedula)
-                miembros = funciones.lista_miembros(cur,parada)                
-                diario = funciones.diario_general(cur,parada) 
-                cuotas_hist = funciones.pendiente_aport(cur,parada)
-                #abonos = funciones.verificar_abonos(cur,parada,cedula,prestamo)
-                pagos = funciones.hist_pago(cur,parada,nombre,cedula)
-                mostrar = funciones.visibilidad(pagos[1])
-                cur.close()
-                return render_template('index.html',informacion=informacion,cabecera=cabecera,fecha=fecha,miembros=miembros,diario=diario,cuotas_hist=cuotas_hist,nombre=nombre,prestamo=prestamo,pagos=pagos,mostrar=mostrar)                 
-        else:
-            msg = 'cedula Incorrecta para esta parada!'        
-            flash(msg)           
-            return redirect(url_for('login'))    
-    
+    cur = connection.cursor() 
+    parada=funciones.vef_cedula(cur,cedula)   
+    print(parada)
+    if parada!= []:                                                                             
+            fecha = datetime.strftime(datetime.now(),"%Y %m %d - %H")            
+            informacion = funciones.info_parada(cur,parada) 
+            cabecera = funciones.info_cabecera(cur,parada) 
+            nombre =  funciones.info_personal(cur,parada,cedula)
+            prestamo = funciones.verificar_prestamo(cur,parada,cedula)
+            miembros = funciones.lista_miembros(cur,parada)                
+            diario = funciones.diario_general(cur,parada) 
+            cuotas_hist = funciones.pendiente_aport(cur,parada)
+            #abonos = funciones.verificar_abonos(cur,parada,cedula,prestamo)
+            pagos = funciones.hist_pago(cur,parada,nombre,cedula)
+            mostrar = funciones.visibilidad(pagos[1])
+            cur.close()
+            return render_template('index.html',informacion=informacion,cabecera=cabecera,fecha=fecha,miembros=miembros,diario=diario,cuotas_hist=cuotas_hist,nombre=nombre,prestamo=prestamo,pagos=pagos,mostrar=mostrar)                 
     else:
-      msg = 'Esta parada esta fuera de operacion!' 
-      flash(msg)          
-      return redirect(url_for('login'))            
-
+        msg = 'cedula no esta registrada!'        
+        flash(msg)           
+        return redirect(url_for('login'))    
+            
 @app.route("/canal")
 def canal():
     return render_template('canal_motoben.html')

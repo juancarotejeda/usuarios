@@ -112,17 +112,6 @@
   {%endif%}
   {%endwith%} 
   <ol>
-  <li> 
-  <label for="parada">Parada</label>          
-  <select name="parada" id="parada">
-        <optgroup label="Paradas">
-          <option selected ></option> 
-          {%for parada in paradas%}  
-          <option >{{parada}}</option>
-          {%endfor%}
-        </optgroup>
-  </select>      
-  </li> 
   <li>  
     <label for="cedula">Cedula</label>    
     <input type="text" name="cedula" id="cedula" placeholder="Cedula" required>       
