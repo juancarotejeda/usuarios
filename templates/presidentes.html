@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>choferes</title>
+    <link rel="webside icon" type="png" href="/static/imagen/favicon/favicon-32x32.png">
+    <link href="/static/css/min.css" rel="stylesheet"> 
+    <link href="/static/css/navbars.css" rel="stylesheet">   
+    <!-- Custom styles for this template -->  
+    <script src="/static/js/min.js"></script>
+    <script src="/static/js/color-modes.js"></script> 
+   <script src="/static/js/mostrar.js"></script>
+  </head>
+  <body>
+    <div id="regreso"></div>  
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+      </symbol>
+      <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+      </symbol>
+      <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+      </symbol>
+      <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+      </symbol>
+    </svg>
+
+    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+      <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+              id="bd-theme"
+              type="button"
+              aria-expanded="false"
+              data-bs-toggle="dropdown"
+              aria-label="Toggle theme (auto)">
+        <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
+            Light
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
+            Dark
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#circle-half"></use></svg>
+            Auto
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+<header data-bs-theme="dark">
+  <div class="collapse text-bg-dark" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4>About</h4>
+          <p class="text-body-secondary">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4>Contact</h4>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white">Follow on Twitter</a></li>
+            <li><a href="#" class="text-white">Like on Facebook</a></li>
+            <li><a href="#" class="text-white">Email me</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <strong>Album</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</header>
+      <div class="publicidad">
+         <img  src="/static/imagen/barrio_seguro-intran.gif" alt="publicidad">
+      </div>  
+      <div class="container">   
+      <section id="lista_pagos"> 
+      <fieldset class="pago">
+      <form action="/data_cuotas" method="POST">   
+         <h1>LISTA DE PAGOS</h1> 
+         <ol>
+         <li>
+         <label for="paradas">PARADA:</label>             
+         <input type="text" name="parada" value="{{parada}}" id="paradas">
+         </li>
+         <li>                     
+         <label for="fecha">FECHA:</label>
+         <input type="text" name="time" value="{{fecha}}" id="fecha">
+         </li>
+         <li>
+         <label for="miembro">MIEMBROS:</label>
+         <input type="text" name="numero" value="{{ cabecera[0]}}" id="miembro">         
+         </li>
+         <li>
+         <label for="valor">CUOTA:</label>
+         {%for dat in informacion %} 
+         <input type="text" name="valor" value="{{dat[6]}}" id="valor">
+         {%endfor%}
+         </li>
+         </ol>
+         </fieldset>
+         <fieldset class="container-tablas">
+         <table class="tables">
+         <tr>
+            <th>ITEM</th>
+            <th> ASOCIADOS</th>
+            <th>CEDULA</th>
+            <th>PAGO</th>            
+         </tr>
+          {% for user in datos %}
+         <tr> 
+            <td>         
+             <input type="hidden" value="{{ user[0]}}" name="item">{{ user[0]}}
+            </td>
+             <td>          
+            <input type="hidden" value="{{ user[1]}}" name="nombre">{{ user[1]}}
+            </td>
+            <td>
+            <input type="hidden" value="{{ user[2]}}" name="cedula">{{ user[2]}}
+            </td>
+            <td>  
+            <select name="select"> 
+                  <option value="no-pago" >cuota no pagada</option>
+                  <option value="pago">cuota pagada</option>
+            </select>
+            <input type="hidden" value="select" name="estado">
+            </td>
+         </tr>
+         {%endfor%} 
+         <tr>
+          <td colspan="4">
+         <button type="submit">Enviar</button>
+         <button type="reset">Limpiar</button>
+        </td>
+         </tr>
+         </form>  
+      </table>
+      <div class="bt-modal">
+      <div class="boton-modal">
+        <label for="btn-listado">
+            Ver finanzas
+        </label>
+      </div>
+      <div class="bt-regresar">
+        <label for="regreso">
+        <a href="#regreso">Regreso</a> 
+      </label>
+      </div>
+      </div>        
+      </fieldset>
+      </section> 
+      <section id="ingresos" >
+        <fieldset class="pago">        
+        <form action="data_ingresos" method="POST">
+        <legend><h1>REPORTE DE INGRESOS</h1></legend>       
+        <ol> 
+        <li>   
+        {%for datos in informacion %}
+           <h1>PARADA:{{datos[1]}}</h1>
+           <input type="hidden" name="parada" value="{{datos[1]}}" id="parada"> 
+        {%endfor%} 
+        </li> 
+        <li>
+          <label for="fecha">FECHA:</label>
+          <input type="text" name="time" value="{{fecha}}" id="fecha">
+          </li>         
+        <li>      
+        <label for="descripcion_i">DESCRIPCION:</label>
+        <select name="descripcion_i" id="descripcion_i">
+           <option >No ingresos</option>
+           <option >Ingresos por publicidad</option>
+           <option >Aporte a la parada</option>
+           <option >Ayuda del estado</option>
+           <option >Recaudacion de Fondo</option>
+           <option >Ingreso segun recibo anexo</option>
+        </select>
+        </li>
+        <li>
+        <label for="cantidad">CANTIDA:</label>
+        <input type="text" name="cantidad_i" id="cantidad" required>
+        </li>
+        <li>
+          <button type="submit">ENVIAR</button>
+        </li>
+        </ol>
+        <div class="bt-modal">
+        <div class="boton-modal">
+          <label for="btn-ingreso">
+              Ver Ingresos
+          </label>
+        </div>
+        <div class="bt-regresar">
+          <label for="regreso">
+          <a href="#regreso">Regreso</a> 
+        </label>      
+        </div>
+        </div>
+        </fieldset>
+        </form>   
+        </section>
+
+        <section id="gastos">
+          <fieldset class="pago">  
+          <form action="/data_gastos" method="POST">
+          <legend><h1>REPORTE GASTOS </h1></legend>   
+          <ol> 
+          <li> 
+          {%for datos in informacion %}
+          <h4>PARADA:{{datos[1]}}</h4>
+          <input type="hidden" name="parada" value="{{datos[1]}}" id="parada">
+          {%endfor%}
+          </li>
+          <li>
+          <label for="fecha">FECHA:</label>
+          <input type="text" name="time" value="{{fecha}}" id="fecha"> 
+          </li>
+          <li>              
+             <label for="descripcion">DESCRIPCION:</label>
+             <select name="descripcion_g" id="descripcion">
+                <option > </option>
+                <option >Pago a la Administradora</option>
+                <option >Ayuda para la Federacion</option>
+                <option >Compra de casco protector</option>
+                <option >Ayuada a Miembro</option>
+                <option >Compra de respuestos</option>
+                <option >Gastos segun Factura anexa</option>
+             </select>
+          </li>  
+          <li>      
+          <label for="cantidad" >CANTIDA:</label>
+          <input type="text" name="cantidad_g"id="cantidad" required >
+          </li>
+          <li>
+            <button type="submit">ENVIAR</button>            
+          </li>
+          </ol>
+          <div class="bt-modal">
+          <div class="boton-modal">
+            <label for="btn-gastos">
+                Ver Gastos
+            </label>
+          </div>
+          <div class="bt-regresar">
+            <label for="regreso">
+            <a href="#regreso">Regreso</a> 
+          </label>         
+          </div>
+          </div>
+          </form>
+          </fieldset>
+          </section>
+        <section id="Prestamos" >
+          <fieldset class="pago"> 
+          <form action="/data_prestamos" method="POST">  
+          <legend><h1>REPORTE PRESTAMOS</h1></legend>    
+          {%for datos in informacion %}   
+          <input type="hidden" name="parada" value="{{datos[1]}}" id="parada">  
+          {%endfor%}      
+          <ol>  
+          <li>
+          {%for datos in informacion %}
+             <h1>PARADA: {{datos[1]}}</h1>
+          {%endfor%}
+          </li> 
+          <li>   
+          <input type="text" name="time" value="{{fecha}}" id="fecha" readonly><br>  
+          </li> 
+          <li> 
+          <label for="beneficiado">BENEFICIADO:</label>  
+          <select name="descripcion_p" id="beneficiado" required>         
+             <option ></option>
+             {% for usuario in miembros %}
+             <option>{{usuario[1]}}</option>
+             {%endfor%}
+          </select>
+          </li>
+          <li>
+          <label for="monto">MONTO:</label>
+          <input type="text" name="cantidad_p" id="monto" required>
+          </li>
+          <li>
+            <button type="submit">ENVIAR</button>            
+          </li>
+          </ol>
+          <div class="bt-modal">
+            <div class="boton-modal">
+              <label for="btn-prestamos">
+                  Ver Prestamos
+              </label>              
+            </div>
+            <div class="bt-regresar">
+              <label for="regreso">
+              <a href="#regreso">Regreso</a> 
+            </label>          
+            </div>
+          </div>
+          </form>
+          </fieldset>
+          </section>
+          <section id="abono">
+            <fieldset class="pago">        
+            <form action="data_abonos" method="POST">
+            <legend><h1>REPORTE DE ABONO A PRESTAMOS</h1></legend>    
+            {%for datos in informacion %}   
+                <input type="hidden" name="parada" value="{{datos[1]}}" id="parada">  
+            {%endfor%}  
+            <ol>   
+            <li>
+            {%for datos in informacion %}
+            <h1>PARADA: {{datos[1]}}</h1>
+            {%endfor%} 
+            </li>                   
+            <li>
+            <label for="fecha">FECHA:</label>
+            <input type="text" name="time" value="{{fecha}}" id="fecha">
+            </li>
+            <li>
+            <label for="abonar">ABONAR A:</label>
+            <select name="descripcion_a" id="abonar">                 
+               <option ></option>
+               {% for usuario in prestamos %}
+               <option >{{usuario[0]}}</option>
+               {%endfor%}
+            </select>
+            </li>
+         
+            <li>
+            <label for="cantidad">CANTIDA:</label>
+            <input type="text" name="cantidad_a" id="cantidad"  value=0.0>
+            </li>
+            <li>
+              <button type="submit">ENVIAR</button> 
+            </li>
+            </ol> 
+            <div class="bt-modal">
+              <div class="boton-modal">
+                <label for="btn-abonos">
+                    Ver Abonos
+                </label>
+              </div>
+              <div class="bt-regresar">
+                <label for="regreso">
+                <a href="#regreso">Regreso</a> 
+              </label>             
+              </div>
+            </div>
+         </fieldset>
+         </section>
+      <section id="banco">
+        <fieldset class="pago">
+        <form action="/data_bancos" method="post"> 
+        {%for datos in informacion %}   
+        <input type="hidden" name="parada" value="{{datos[1]}}" id="parada">      
+         <h1>REPORTE BANCARIO</h1>     
+        <ol>    
+        <li>   
+        <h1>PARADA:{{datos[1]}}</h1>
+        </li>   
+        <li>    
+           <label for="fecha">FECHA:</label>
+           <input type="text" name="time" value="{{fecha}}" id="fecha">
+        </li>
+        <li>                   
+           <label for="banco">BANCO:</label>
+           <input type="text" name="banco" value="{{datos[8]}}" id="banco">
+        </li>
+        <li>     
+           <label for="numero">CUENTA #:</label>
+           <input type="text" name="cuenta" value="{{datos[9]}}" id="numero">
+        </li> 
+        <li>     
+           <label for="operacion">Tipo de Operacion:</label>
+           <select name="operacion" id="operacion">
+              <optgroup label="Tipo de operacion">  
+              <option selected ></option>
+              <option >Deposito</option>
+              <option >Retiro</option>         
+              </optgroup>
+        </select> 
+        <input type="hidden" value="operacion" name="operacion">
+      </li> 
+      <li>    
+         <label for="balance">Monto de operacion:</label>
+         <input type="text" name="balance" value="0.0000" id="balance">
+      </li>
+      <li>
+         <button type="submit">ENVIAR</button>
+      </li> 
+      </ol>           
+         <div class="bt-modal">
+          <div class="boton-modal">
+            <label for="btn-abonos">
+                Ver Abonos
+            </label>
+          </div>
+          <div class="bt-regresar">
+            <label for="regreso">
+            <a href="#regreso">Regreso</a> 
+          </label>             
+          </div>         
+        </div> 
+      {%endfor%}
+      </form>     
+      </fieldset>
+      </section> 
+
+      <input type="checkbox" id="btn-listado">        
+      <div class="container-listado">
+      <div class="content-vu">  
+          <table>
+            <tr>
+               <th>Item</th>
+               <th>Informacion financiera</th>
+               <th>Total al momento</th>
+            </tr>
+            <tr>
+             <tD>1</tD>
+             <td>Historico de aporta de los asociados :</td>
+             <td>{{diario[4]}}RD$</td>
+          </tr>
+          <tr>
+             <tD>2</tD>
+             <td>Historico de ingresos por otras actividades :</td>
+             <td> {{diario[2]}}RD$</td>
+          </tr>
+          <tr>
+             <tD>3</tD>
+             <td> Historico de abonos a prestamos de los asociados:</td>
+             <td>{{diario[6]}}RD$</td>
+          </tr>
+            <tr>
+             <tD>4</tD>
+             <td>Historico de Prestamos facilitados los asociados :</td>
+             <td>{{diario[1]}}RD$</td>
+          </tr>
+          <tr>
+             <tD>5</tD>
+             <td>Historial de cuotas no pagadas por los asociados:</td>
+             <td>{{diario[5]}}RD$</td>
+          </tr>
+          <tr>
+             <tD>6</tD>
+             <td>Historial de gastos incurridos por la parada :</td>
+             <td>{{diario[3]}}RD$</td>
+          </tr>
+       
+            <tr>
+               <tD>7</tD>
+               <td>Informacion de balance bancario actualizada:</td>
+               <td>{{diario[7]}}RD$</td>
+            </tr>
+            <tr>
+               <tD>8</tD>
+               <td>Balance segun datos aportas por el presidente:</td>
+               <td>{{diario[0]}}RD$</td>
+            </tr>
+         </table>
+        </div>
+          <div class="content-botton">
+                <div class="btn-cerrar">
+                    <label for="btn-listado">Cerrar</label>
+                </div>
+          </div>
+        </div>
+
+        <input type="checkbox" id="btn-ingreso">        
+        <div class="container-ingreso">
+        <div class="content-vu">  
+          <h1>INGRESO</h1>
+        </div>
+        <div class="content-botton">
+          <div class="btn-cerrar">
+              <label for="btn-ingreso">Cerrar</label>
+          </div>
+        </div>
+        </div>
+  
+        <input type="checkbox" id="btn-gastos">        
+        <div class="container-gastos">
+        <div class="content-vu">  
+          <h1>GASTOS</h1>
+        </div>
+        <div class="content-botton">
+          <div class="btn-cerrar">
+              <label for="btn-gastos">Cerrar</label>
+          </div>
+        </div>
+        </div>  
+
+        <input type="checkbox" id="btn-prestamos">        
+        <div class="container-prestamos">
+        <div class="content-vu">  
+          <h1>PRESTAMOS</h1>
+        </div>
+        <div class="content-botton">
+          <div class="btn-cerrar">
+              <label for="btn-prestamos">Cerrar</label>
+          </div>
+        </div>
+        </div> 
+        
+        <input type="checkbox" id="btn-abonos">        
+        <div class="container-abonos">
+        <div class="content-vu">  
+          <h1>ABONOS</h1>
+        </div>
+        <div class="content-botton">
+          <div class="btn-cerrar">
+              <label for="btn-abonos">Cerrar</label>
+          </div>
+        </div>
+        </div>  
+      </div>       
+  </body>
+</html>

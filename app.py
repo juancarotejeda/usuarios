@@ -21,14 +21,8 @@ connection = mysql.connector.connect(
 )
 
 @app.route("/")
-def login():   
-    cur = connection.cursor() 
-    resultado=funciones.listado_paradas(cur)
-    paradas=[]
-    for paradax in resultado:
-       paradas+=paradax  
-    cur.close()                   
-    return render_template('login.html',paradas=paradas)
+def login():                     
+    return render_template('login.html')
 
 @app.route("/verificador", methods=["GUET","POST"])
 def verificador(): 
@@ -37,21 +31,25 @@ def verificador():
     cedula = request.form['cedula']  
     cur = connection.cursor() 
     parada=funciones.vef_cedula(cur,cedula)   
-    print(parada)
     if parada!= []:                                                                             
             fecha = datetime.strftime(datetime.now(),"%Y %m %d - %H")            
             informacion = funciones.info_parada(cur,parada) 
-            cabecera = funciones.info_cabecera(cur,parada) 
+            cabecera = funciones.info_cabecera(cur,parada,cedula) 
             nombre =  funciones.info_personal(cur,parada,cedula)
             prestamo = funciones.verificar_prestamo(cur,parada,cedula)
             miembros = funciones.lista_miembros(cur,parada)                
             diario = funciones.diario_general(cur,parada) 
             cuotas_hist = funciones.pendiente_aport(cur,parada)
-            #abonos = funciones.verificar_abonos(cur,parada,cedula,prestamo)
+            datos=funciones.aportacion(cur,parada) 
             pagos = funciones.hist_pago(cur,parada,nombre,cedula)
             mostrar = funciones.visibilidad(pagos[1])
+            prestamos=funciones.lista_prestamos(cur,parada)
             cur.close()
-            return render_template('index.html',informacion=informacion,cabecera=cabecera,fecha=fecha,miembros=miembros,diario=diario,cuotas_hist=cuotas_hist,nombre=nombre,prestamo=prestamo,pagos=pagos,mostrar=mostrar)                 
+            
+            if cabecera[2] !='Presidente':
+               return render_template('index.html',informacion=informacion,cabecera=cabecera,fecha=fecha,miembros=miembros,diario=diario,cuotas_hist=cuotas_hist,nombre=nombre,prestamo=prestamo,pagos=pagos,mostrar=mostrar)   
+            else: 
+                return render_template("presidentes.html",informacion=informacion,miembros=miembros,datos=datos,cabecera=cabecera,fecha=fecha,diario=diario,prestamos=prestamos,parada=parada)             
     else:
         msg = 'cedula no esta registrada!'        
         flash(msg)           

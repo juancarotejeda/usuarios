@@ -17,7 +17,7 @@ def info_parada(cur,parada):
     infos=cur.fetchall()     
     return infos
 
-def info_cabecera(cur,parada):          
+def info_cabecera(cur,parada,cedula):          
     cur.execute(f'SELECT nombre FROM {parada}')
     seleccion=cur.fetchall()
     cant=len(seleccion)  
@@ -30,7 +30,7 @@ def info_cabecera(cur,parada):
     else:     
        presidente='No disponible'   
     veedor = []
-    cur.execute(f"SELECT nombre FROM {parada}  WHERE funcion = 'Veedor'")   
+    cur.execute(f"SELECT funcion FROM {parada}  WHERE cedula = '{cedula}'")   
     presd=cur.fetchone()
     if presd != None:
      for prex in presd:
@@ -99,6 +99,16 @@ def pendiente_aport(cur,parada):
     else:
       return [] 
 
+
+
+def lista_prestamos(cur,parada):
+    cur.execute(f"SHOW TABLES LIKE '{parada}_prestamos'")
+    vericar=cur.fetchall()
+    if vericar !=[]:
+      cur.execute(f"SELECT prestamo_a FROM {parada}_prestamos")
+      nombres=cur.fetchall()
+      return nombres
+    return []
 
 
 
@@ -211,7 +221,5 @@ def vef_cedula(cur,cedula):
       cur.execute(f"SELECT nombre FROM {parada} WHERE cedula='{cedula}'")
       nombre=cur.fetchall()
       if nombre !=[]:            
-        print(parada)
-        return parada
-              
+        return parada             
   return []    
