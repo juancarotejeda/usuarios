@@ -13,6 +13,7 @@
    <script src="/static/js/mostrar.js"></script>
   </head>
   <body>
+    <div class="container p-3 my-5  text-white">   
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -63,9 +64,9 @@
         </li>
       </ul>
     </div>
-<header data-bs-theme="dark">
+  <div class="container data-bs-theme='dark' ">
   <div class="collapse text-bg-dark" id="navbarHeader">
-    <div class="container">
+    
       <div class="row">
         <div class="col-sm-8 col-md-7 py-4">
           <h4>About</h4>
@@ -81,28 +82,22 @@
         </div>
       </div>
     </div>
-  </div>
   <div class="navbar navbar-dark bg-dark shadow-sm">
-    <div class="container">
+    
       <a href="#" class="navbar-brand d-flex align-items-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        <strong>Album</strong>
+        <strong>Grupo Actec</strong>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    </div>
-  </div>
-</header>
-<body> 
-  <div class="album py-5 bg-body-tertiary">
-    <div class="container">    
-  <div class="container">
-    <div class="publicidad">
-      <img src="/static/imagen/barrio_seguro-intran.gif" alt="publicidad">
-    </div>
+    </div>  
+</div>
+<div class="container-fluid publicidad">
+  <img  src="/static/imagen/barrio_seguro-intran.gif" alt="publicidad">
+</div> 
     <section id="informacion">
-      <fieldset class="info-parada">  
+      <div class=" container p-3 text-bg-info info-parada">  
         {%for datos in informacion %}   
         <h1>INFORMACION DE LA PARADA</h1>  
         <ol>    
@@ -148,31 +143,21 @@
         <input type="text" value={{datos[11]}} id="geo" readonly>
         </li>
         </ol>
-        <button id="boton" onclick="mostrar()">Mostrar Imagen</button>
         {%endfor%}
-        <div class="botonera">
-        <div class="bt-regresar">
-          <label for="regresar">
-          <a href="#regresar">regreso</a> 
-        </label>
         </div>
-        </div>
-        </fieldset>
-    </section>
+        </section>
 <section id="info-personal">
-  <fieldset class="info-personal" id="info_personal">
+  <div class="container p-3 info-personal text-bg-warning" id="info_personal">
     <h1>INFORMACION PERSONAL</h1>
     <p>Saludos Señor(a) {{nombre}} {{prestamo}}. 
     Por otro lado {{abonos}}.<br> de un total de{{pagos[0]}}.<br> 
     "Recuerde que esta parada es su fuente de vida cuidala"<br>
     <h3>Mensaje de la FEDERACION Y ACTEC</h3>
     </p>
-    <input type="hidden" value={{pagos[1]}} id="pagos">
-  </fieldset>
+  </div>
 </section>
-<fieldset class="datas">   
-    <fieldset class="autorizacion" id="autorizacion" >  
-    <section id="listado"> 
+<section id="listado"> 
+<div class="container pago">   
     <h1>Miembros Registrado</h1>
     <table>
            <tr>
@@ -192,15 +177,10 @@
            </tr>
            {%endfor%}
            </table>
-               <div class="botonera">
-               <div class="bt-regresar">
-               <label for="regresar">
-               <a href="#regresar">regreso</a> 
-               </label>
-               </div> 
-               </div> 
+      </div> 
       </section>
       <section id="finanzas">
+      <div class="container pago">   
            <h1>INFORMACION FINANCIERA</h1>
            <table>
            <tr>
@@ -250,15 +230,10 @@
          <td>{{diario[7]}}RD$</td>
          </tr>
            </table>
-           <div class="botonera">
-           <div class="bt-regresar">
-           <label for="regresar">
-              <a href="#regresar">regreso</a> 
-           </label>
-           </div>
-           </div>
+    </div>
     </section>
     <section id="aportes">
+    <div class="container pago">   
     <h1>Historial de Aportes y Pendientes</h1>
     <table>
       <tr>
@@ -278,22 +253,8 @@
       </tr>  
       {%endfor%}             
       </table>
-      <div class="botonera">
-      <div class="bt-regresar">
-      <label for="regresar">
-          <a href="#regresar">regreso</a> 
-      </label>
-      </div>
       </div>    
       </section>
-      <section id="otros"></section>
-      <section id="galeria"></section>
-      </section>
-  </fieldset>
-  <fieldset class="desautorizacion" id="desautorizacion">
-    <h1>NO HAY INFORMACION PARA MOSTRAL</h1>
-  </fieldset> 
-  </fieldset> 
   <section id="video">
     <video class="video" id="mis-videos"  src="/static/imagen/video_publicidad.mp4" controls autoplay loop></video>
     </section>

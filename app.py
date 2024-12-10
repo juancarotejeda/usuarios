@@ -44,8 +44,7 @@ def verificador():
             pagos = funciones.hist_pago(cur,parada,nombre,cedula)
             mostrar = funciones.visibilidad(pagos[1])
             prestamos=funciones.lista_prestamos(cur,parada)
-            cur.close()
-            
+            cur.close()            
             if cabecera[2] !='Presidente':
                return render_template('index.html',informacion=informacion,cabecera=cabecera,fecha=fecha,miembros=miembros,diario=diario,cuotas_hist=cuotas_hist,nombre=nombre,prestamo=prestamo,pagos=pagos,mostrar=mostrar)   
             else: 

@@ -64,16 +64,10 @@ display:block;
 }
 
 .publicidad{
-  margin: 0px auto;
-  align-items: center;
-  height: 100px;
-  width: auto;
-  color: white;
-  font-size: 12px;
-  width: max-content;
   border:solid 5px LightSteelBlue;
   border-radius: 10px;
-  overflow: hidden;
+  margin-bottom: 10px;
+ 
 }
   
 
@@ -84,14 +78,9 @@ display:block;
 
 /*=============================info-personal========================*/
 .info-personal{
-  width: auto;
-  min-height: 150px;
-  background: #000000;
-  color: white;
   border-radius: 10px;
-  margin-top: 5px;
-  margin-bottom: 10px;
   padding: 5px;
+  margin-bottom: 10px;
 }
 
 .info-personal h1{
@@ -108,13 +97,11 @@ font-size: medium;
 /*===============================info-parada======================*/
 
 .info-parada{
-    color: white;
+    color: #000000;
     font-size: 12px;
-    padding: 5px;
-    width: auto;
     border:solid 10px LightSteelBlue inset;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 .info-parada h1{
@@ -131,13 +118,10 @@ font-size: medium;
 
   .info-parada input{
     font-size:14px;
-    color:#000000;
-    width:200px;
-    height: 30px;
-    background: transparent;
+    color:#ff0202; 
+    background: none;
     border: none;
-    position: relative;
-    left: 10px;
+
     }
 
   .info-parada label{
@@ -189,40 +173,9 @@ font-size: medium;
 }
 
 
-@media (max-width:768px) {
 
- 
 
-.info-parada{
-  min-width: 390px;
-}
 
-.info-personal{
-  min-width: 390px;
-}
-
-  .datas{
-    min-width: 390px;
-  }
-
- .encabezado{
-  min-width: 390px;
- } 
-
- .navbar {
-  min-width: 390px;
- 
-}
-.login{
-  min-width: 390px;  
-}
- 
-}
-
-.publicidad{
-  min-width: 390px;  
- 
-}
 
 
 
@@ -295,17 +248,13 @@ font-size: medium;
     background: rgb(86, 137, 154);
     color: #000000;
     font-size: 12px;
-    font-weight: 700;
-    width: max-content;
-    height: 250px;
+    width: 100%;
     border:solid 10px LightSteelBlue;
     border-radius: 10px;
     margin: 10px auto;
       }
           
-      .login fieldset{
-          border: none;
-          }
+
           
       .login h1{
           text-align: center;
@@ -328,7 +277,6 @@ font-size: medium;
           line-height: 25px;
           list-style: none;
         margin-bottom:  15px;
-        margin-left: 80px;
           }
           
 
@@ -339,17 +287,6 @@ font-size: medium;
       }         
 
 
-      .login select{
-        font-size:12px;
-        background: rgb(255, 255, 255);
-        color: #000000;
-        font-weight: 700;
-        float: right;
-        border-radius: 5px;
-        margin-right:60px ;          
-        width: 150px;
-        height: 25px;
-      }
 
 
       
@@ -358,11 +295,7 @@ font-size: medium;
         background: rgb(255, 255, 255);
         color: #000000;
         font-weight: 700;
-        float: right;
-        border-radius: 5px;
-        margin-right:60px ; 
-        height: 20px; 
-        width: 150px;
+
               }
       
 .login button{
@@ -370,22 +303,10 @@ font-size: medium;
     background: rgb(255, 255, 255);
     color: #000000;
     font-weight: 700;
-    float: right;
-    border-radius: 5px;
-    margin-right:60px ; 
-    height: 25px; 
-    width: 150px;  
+ width: 92%;
   }        
 
-  .login select option{
-    background:black;
-    color:red;
-  }
 
-.login select option:disabled{
-    background: blue;
-  } 
-  
   
   .datas{
     width: auto;
@@ -482,14 +403,13 @@ font-size: medium;
         font-size: 12px;
         width: auto;
         border:solid 5px LightSteelBlue;
+        border-radius: 10px;
         padding-bottom: 10px;
         margin-bottom: 10px;
         
       }
         
-        .pago fieldset{
-        border: none;
-      }
+
         
       .pago h1{
           text-align: center;
@@ -561,7 +481,7 @@ font-size: medium;
             }
       
          .tables{
-          background-color: #d1c7c7;
+          background: #e6dbdb;
           color: rgb(0, 0, 0);
           font-size: 12px;
           width: auto;
@@ -599,10 +519,7 @@ font-size: medium;
             background: yellow;
             color: #000000;
             border-radius: 5px;
-            float: right;
-            width: 150px;
-            height: 30px;
-            margin-right: 30px;
+
            
             } 
 

@@ -13,7 +13,7 @@
    <script src="/static/js/mostrar.js"></script>
   </head>
   <body>
-    <div id="regreso"></div>  
+    <div class="container p-3 my-5  text-white">  
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -64,7 +64,7 @@
         </li>
       </ul>
     </div>
-<header data-bs-theme="dark">
+    <div class="container data-bs-theme='dark'">    
   <div class="collapse text-bg-dark" id="navbarHeader">
     <div class="container">
       <div class="row">
@@ -83,26 +83,21 @@
       </div>
     </div>
   </div>
+  
   <div class="navbar navbar-dark bg-dark shadow-sm">
-    <div class="container">
-      <a href="#" class="navbar-brand d-flex align-items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        <strong>Album</strong>
-      </a>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"></svg>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
-  </div>
-</header>
-    <div class="container">
-      <div class="publicidad">
+</div>
+    <div class="container-fluid publicidad">
          <img  src="/static/imagen/barrio_seguro-intran.gif" alt="publicidad">
-      </div>  
-      <div class="container">   
-      <section id="lista_pagos"> 
-      <fieldset class="pago">
-      <form action="/data_cuotas" method="POST">   
+    </div>  
+
+    <section id="lista_pagos"></section>
+    <div class="container pago">          
+    <form action="/data_cuotas" method="POST">   
          <h1>LISTA DE PAGOS</h1> 
          <ol>
          <li>
@@ -124,9 +119,10 @@
          {%endfor%}
          </li>
          </ol>
-         </fieldset>
-         <fieldset class="container-tablas">
-         <table class="tables">
+        </div>  
+
+        <div class="tables">         
+         <table >
          <tr>
             <th>ITEM</th>
             <th> ASOCIADOS</th>
@@ -151,32 +147,31 @@
             </select>
             <input type="hidden" value="select" name="estado">
             </td>
-         </tr>
-         {%endfor%} 
-         <tr>
-          <td colspan="4">
+      </tr>
+        {%endfor%} 
+      <tr>
+      <td colspan="4">
          <button type="submit">Enviar</button>
          <button type="reset">Limpiar</button>
-        </td>
-         </tr>
-         </form>  
-      </table>
-      <div class="bt-modal">
-      <div class="boton-modal">
-        <label for="btn-listado">
+      </td>
+      </tr>
+      <tr>
+         <td colspan="4">
+         <div class="bt-modal">
+         <div class="boton-modal">
+         <label for="btn-listado">
             Ver finanzas
-        </label>
+         </label>
       </div>
-      <div class="bt-regresar">
-        <label for="regreso">
-        <a href="#regreso">Regreso</a> 
-      </label>
-      </div>
-      </div>        
-      </fieldset>
-      </section> 
+      </div> 
+      </td>
+      </tr>
+      </form>  
+      </table>       
+      </section>
+      </div>  
       <section id="ingresos" >
-        <fieldset class="pago">        
+      <div class="container pago">                
         <form action="data_ingresos" method="POST">
         <legend><h1>REPORTE DE INGRESOS</h1></legend>       
         <ol> 
@@ -215,18 +210,12 @@
               Ver Ingresos
           </label>
         </div>
-        <div class="bt-regresar">
-          <label for="regreso">
-          <a href="#regreso">Regreso</a> 
-        </label>      
         </div>
-        </div>
-        </fieldset>
         </form>   
         </section>
-
+        </div>
         <section id="gastos">
-          <fieldset class="pago">  
+          <div class=" container pago">  
           <form action="/data_gastos" method="POST">
           <legend><h1>REPORTE GASTOS </h1></legend>   
           <ol> 
@@ -266,17 +255,12 @@
                 Ver Gastos
             </label>
           </div>
-          <div class="bt-regresar">
-            <label for="regreso">
-            <a href="#regreso">Regreso</a> 
-          </label>         
-          </div>
           </div>
           </form>
-          </fieldset>
+          </div>
           </section>
         <section id="Prestamos" >
-          <fieldset class="pago"> 
+          <div class="container pago"> 
           <form action="/data_prestamos" method="POST">  
           <legend><h1>REPORTE PRESTAMOS</h1></legend>    
           {%for datos in informacion %}   
@@ -314,17 +298,12 @@
                   Ver Prestamos
               </label>              
             </div>
-            <div class="bt-regresar">
-              <label for="regreso">
-              <a href="#regreso">Regreso</a> 
-            </label>          
-            </div>
           </div>
           </form>
-          </fieldset>
+          </div>
           </section>
           <section id="abono">
-            <fieldset class="pago">        
+            <div class=" container pago">        
             <form action="data_abonos" method="POST">
             <legend><h1>REPORTE DE ABONO A PRESTAMOS</h1></legend>    
             {%for datos in informacion %}   
@@ -358,22 +337,18 @@
               <button type="submit">ENVIAR</button> 
             </li>
             </ol> 
+            </form>
             <div class="bt-modal">
               <div class="boton-modal">
                 <label for="btn-abonos">
                     Ver Abonos
                 </label>
               </div>
-              <div class="bt-regresar">
-                <label for="regreso">
-                <a href="#regreso">Regreso</a> 
-              </label>             
-              </div>
             </div>
-         </fieldset>
+            </div>
          </section>
       <section id="banco">
-        <fieldset class="pago">
+        <div class="container pago">
         <form action="/data_bancos" method="post"> 
         {%for datos in informacion %}   
         <input type="hidden" name="parada" value="{{datos[1]}}" id="parada">      
@@ -418,16 +393,11 @@
             <label for="btn-abonos">
                 Ver Abonos
             </label>
-          </div>
-          <div class="bt-regresar">
-            <label for="regreso">
-            <a href="#regreso">Regreso</a> 
-          </label>             
-          </div>         
+          </div>        
         </div> 
       {%endfor%}
       </form>     
-      </fieldset>
+      </div>
       </section> 
 
       <input type="checkbox" id="btn-listado">        
@@ -536,6 +506,8 @@
           </div>
         </div>
         </div>  
-      </div>       
+      </div> 
+    </div>
+    </div>      
   </body>
 </html>
